@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickSantaApp", "PickSantaAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickSanta.MVC", "PickSanta.MVC\PickSanta.MVC.csproj", "{E2AD6B66-8EA4-4E0E-8CF7-2AC14534A525}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickSanta.DB", "PickSanta.DB\PickSanta.DB.csproj", "{1A2B7107-FC89-46A1-858A-27BEBE456AF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickSanta.DB.Tests", "PickSanta.DB.Tests\PickSanta.DB.Tests.csproj", "{D476BFD1-25D8-4C53-9629-70CC73A5EDDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{E2AD6B66-8EA4-4E0E-8CF7-2AC14534A525}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2AD6B66-8EA4-4E0E-8CF7-2AC14534A525}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2AD6B66-8EA4-4E0E-8CF7-2AC14534A525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A2B7107-FC89-46A1-858A-27BEBE456AF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A2B7107-FC89-46A1-858A-27BEBE456AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A2B7107-FC89-46A1-858A-27BEBE456AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A2B7107-FC89-46A1-858A-27BEBE456AF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D476BFD1-25D8-4C53-9629-70CC73A5EDDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D476BFD1-25D8-4C53-9629-70CC73A5EDDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D476BFD1-25D8-4C53-9629-70CC73A5EDDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D476BFD1-25D8-4C53-9629-70CC73A5EDDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
