@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickSantaApp", "PickSantaApp\PickSantaApp.csproj", "{4554C1A7-ED04-46C0-B38D-B0CB091B3C65}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickSanta.MVC", "PickSanta.MVC\PickSanta.MVC.csproj", "{E2AD6B66-8EA4-4E0E-8CF7-2AC14534A525}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickSanta.DB", "PickSanta.DB\PickSanta.DB.csproj", "{1A2B7107-FC89-46A1-858A-27BEBE456AF9}"
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4554C1A7-ED04-46C0-B38D-B0CB091B3C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4554C1A7-ED04-46C0-B38D-B0CB091B3C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4554C1A7-ED04-46C0-B38D-B0CB091B3C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4554C1A7-ED04-46C0-B38D-B0CB091B3C65}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E2AD6B66-8EA4-4E0E-8CF7-2AC14534A525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E2AD6B66-8EA4-4E0E-8CF7-2AC14534A525}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2AD6B66-8EA4-4E0E-8CF7-2AC14534A525}.Release|Any CPU.ActiveCfg = Release|Any CPU

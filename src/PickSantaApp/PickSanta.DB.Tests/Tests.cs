@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace PickSanta.DB.Tests
 {
     [TestClass]
-    public class UserTests
+    public class Tests
     {
         private IDataAccess dataAccess;
 
@@ -30,11 +30,14 @@ namespace PickSanta.DB.Tests
             Assert.IsNotNull(allUsers);
             Assert.AreEqual(1, allUsers.Count, "There should be only one user");
             Assert.AreEqual(allUsers[0].Email, email, "The email address should be same");
-            Assert.AreEqual(allUsers[0].Name, name, "The email address should be same");
+            Assert.AreEqual(allUsers[0].Name, name, "The name should be same");
+            Assert.AreEqual(allUsers[0].HasRolled, false, "New user shouldnt have rolled");
             var user = dataAccess.GetUser(email);
             Assert.IsNotNull(user);
             Assert.AreEqual(user.Email, email, "The email address should be same");
-            Assert.AreEqual(user.Name, name, "The email address should be same");
+            Assert.AreEqual(user.Name, name, "The name should be same");
+            Assert.AreEqual(user.HasRolled, false, "New user shouldnt have rolled");
+
 
             dataAccess.RemoveUser(email);
             user = dataAccess.GetUser(email);
@@ -53,11 +56,13 @@ namespace PickSanta.DB.Tests
             dataAccess.CreateSantaMap(giftee, santa);
 
             var allMaps = dataAccess.GetAllSantaMaps();
-
             Assert.IsNotNull(allMaps);
             Assert.AreEqual(1, allMaps.Count);
             Assert.AreEqual(giftee, allMaps[0].Giftee);
             Assert.AreEqual(santa, allMaps[0].Santa);
+
+            var santaUser = dataAccess.GetUser(santa);
+            Assert.IsTrue(santaUser.HasRolled);
 
             var santaMap = dataAccess.GetGifteeForSanta(santa);
             Assert.IsNotNull(santaMap);
@@ -67,6 +72,9 @@ namespace PickSanta.DB.Tests
             dataAccess.ResetSantaMap(santa);
             santaMap = dataAccess.GetGifteeForSanta(santa);
             Assert.IsNull(santaMap);
+
+            santaUser = dataAccess.GetUser(santa);
+            Assert.IsFalse(santaUser.HasRolled);
         }
     }
 }

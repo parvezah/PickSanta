@@ -155,11 +155,19 @@ namespace PickSanta.DB
 
             var santaMap = new SantaMap(giftee, santa);
             this.InsertEntity(santaMap);
+
+            this.SetUserRoll(santaUser.Name, santaUser.Email, true);
         }
 
         public void CreateUser(string name, string email)
         {
             var user = new User(name, email, false);
+            this.InsertEntity(user);
+        }
+
+        private void SetUserRoll(string name, string email, bool rollValue)
+        {
+            var user = new User(name, email, rollValue);
             this.InsertEntity(user);
         }
 
@@ -195,12 +203,21 @@ namespace PickSanta.DB
 
         public void ResetSantaMap(string santa)
         {
+            var santaUser = this.GetUser(santa);
+
+            if(santaUser == null)
+            {
+                throw new InvalidDataException("Satna user not found");
+            }
+
             var santaMap = this.GetGifteeForSanta(santa);
 
             if (santaMap != null)
             {
                 this.DeleteEntity(santaMap);
             }
+
+            this.SetUserRoll(santaUser.Name, santaUser.Email, false);
         }
 
         public void Dispose()
