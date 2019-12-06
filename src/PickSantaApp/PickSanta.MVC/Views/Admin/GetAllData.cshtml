@@ -1,0 +1,32 @@
+﻿@model PickSanta.MVC.Models.GetAllDataModel
+@{
+    ViewData["Title"] = "GetAllData";
+}
+
+<h1>GetAllData</h1>
+
+<div><b>Current All User Data</b><br /></div>
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Name </th>
+        <th>Email </th>
+        <th>HasRolled</th>
+        <th>Giftee</th>
+    </tr>
+    @foreach (var user in Model.Users)
+    {
+        <tr>
+            <td>@user.Name</td>
+            <td>@user.Email</td>
+            <td>@user.HasRolled</td>
+            <td>
+                @if (Model.Maps != null && Model.Maps.Any(m => m.Santa.Equals(user.Email, StringComparison.OrdinalIgnoreCase)))
+                {
+                    var map = Model.Maps.First(m => m.Santa.Equals(user.Email, StringComparison.OrdinalIgnoreCase));
+                    @map.Giftee
+                }
+            </td>
+        </tr>
+
+    }
+</table>  

@@ -21,6 +21,7 @@ namespace PickSanta.MVC
 
         private static string GetKeyVaultEndpoint() => "https://picksantaapp-0-kv.vault.azure.net/";
 
+
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((context, config) =>

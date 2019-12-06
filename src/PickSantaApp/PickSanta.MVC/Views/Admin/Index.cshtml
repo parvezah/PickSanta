@@ -5,3 +5,8 @@
 
 <h1>All Admin stuff!</h1>
 
+@using (Html.BeginForm())
+{
+    <input type="button" value="AddData" onclick="location.href = '@Url.Action("AddData", "Admin")'" />
+    <input type="button" value="GetAllData" onclick="location.href = '@Url.Action("GetAllData", "Admin")'" />
+}
