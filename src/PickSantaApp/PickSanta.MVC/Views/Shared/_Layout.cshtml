@@ -26,7 +26,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Rules">Rules</a>
                         </li>
-                        @if (User.Identity.IsAuthenticated && User.Identity.Name.Equals("parvezah@microsoft.com"))
+                        @if (User.Identity.IsAuthenticated 
+                             && User.Identity.Name.Equals("parvezah@microsoft.com")
+                             && User.Identity.Name.Equals("ganeshk@microsoft.com")
+                             && User.Identity.Name.Equals("nibalach@microsoft.com")
+                             && User.Identity.Name.Equals("janoopur@microsoft.com")
+                            )
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Admin Mode</a>

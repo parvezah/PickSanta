@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PickSanta.DB;
 using PickSanta.MVC.Models;
 
 namespace PickSanta.MVC.Controllers
@@ -14,20 +15,55 @@ namespace PickSanta.MVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IDataAccess _dataAccess;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IDataAccess dataAccess)
         {
             _logger = logger;
+            _dataAccess = dataAccess;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var model = new HomeViewModel();
+            if (this.User.Identity.IsAuthenticated)
+            {
+                var email = this.User.Identity.Name;
+
+                var user = _dataAccess.GetUser(email);
+                var santaMap = _dataAccess.GetGifteeForSanta(email);
+                model.User = user;
+                model.Map = santaMap;
+            }
+            ModelState.Clear();
+            return View(model);
         }
 
         public IActionResult Rules()
         {
             return View();
+        }
+
+        public IActionResult Roll()
+        {
+            string result = "Failed";
+            if (this.User.Identity.IsAuthenticated)
+            {
+                var email = this.User.Identity.Name;
+
+                var user = _dataAccess.GetUser(email);
+                var santaMap = _dataAccess.GetGifteeForSanta(email);
+
+                if (santaMap == null)
+                {
+                    _dataAccess.CreateSantaMap("parvezah@microsoft.com", user.Email);
+                    santaMap = _dataAccess.GetGifteeForSanta(email);
+                    
+                }
+                result = santaMap.Giftee;
+            }
+            ModelState.Clear();
+            return View("Roll", result);
         }
 
         [AllowAnonymous]

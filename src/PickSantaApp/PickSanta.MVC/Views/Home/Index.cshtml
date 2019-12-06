@@ -1,4 +1,5 @@
 ﻿@using System.Security.Principal
+@model PickSanta.MVC.Models.HomeViewModel
 @{
     ViewData["Title"] = "Roll Santa";
 }
@@ -7,7 +8,21 @@
 {
     <div class="text-center">
         <h1 class="display-4">Welcome @User.Claims.First(c => c.Type == "name").Value!</h1>
-        <p>Click below button to roll for a name!.</p>
+
+        @if (Model.User == null)
+        {
+            <p>You have not registered to participate in Secret Santa 4.0!</p>
+        }
+        else if (Model.User.HasRolled)
+        {
+            <p>You have already rolled and you are the Santa for @Model.Map.Giftee !.</p>
+        }
+        else
+        {
+            <p>Click the button to roll!.</p>
+            <input type="button" value="Roll Data" onclick="location.href = '@Url.Action("Roll", "Home")'" />
+        }
+
     </div>    
 }
 else
